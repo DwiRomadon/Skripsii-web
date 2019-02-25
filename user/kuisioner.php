@@ -6,14 +6,13 @@ if(isset($_SESSION['username']) && $_SESSION['level'] == '2'){
     $username = $_SESSION['username'];
     $name = $_SESSION['name'];
     $email = $_SESSION['email'];
+    $iduser   = $_SESSION['id'];
 }else{
     echo "<script>alert('Anda tidak diizinkan mengakses halaman ini'); window.location=('http://localhost/ratih/');</script>";
 }
 require_once("../function/koneksi.php");
 
 $klausal    = mysqli_query($con,"select * from t_klausal");
-
-$query      = mysqli_query($con,"select * from t_kuisioner");
 ?>
 
 <!doctype html>
@@ -84,73 +83,34 @@ $query      = mysqli_query($con,"select * from t_kuisioner");
                     <div class="col-xs-12 col-sm-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Pilihan Klausal</strong>
+                                <strong class="card-title">Tampilkan Quisioner Berdasarkan</strong>
                             </div>
                             <div class="card-body">
-
-                              <select data-placeholder="Pilih Klausal..." class="standardSelect" tabindex="1">
-                                <option value="" label="default"></option>
-                                  <?php foreach ($klausal as $data){ ?>
-                                    <option value="<?php echo $data['kode_klausal'];?>"><?php echo $data['klausal'];?></option>
-                                  <?php }?>
-                            </select>
+                            <form action="getkuisioner" method="POST" enctype="multipart/form-data" class="form-horizontal">
+                              <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                                  <tr>
+                                    <td>
+                                        <select name="kodeklausal" data-placeholder="Pilih Klausal..." class="standardSelect" tabindex="1">
+                                            <option>--Pilih Kode Klausal--</option>
+                                            <option value="" label="default"></option>
+                                            <?php foreach ($klausal as $data){ ?>
+                                                <option value="<?php echo $data['kode_klausal'];?>"><?php echo $data['kode_klausal']." - ".$data['klausal'];?></option>
+                                            <?php }?>
+                                        </select>
+                                    </td>
+                                  </tr>
+                              </table>
+                                <div class="text-right">
+                                    <hr>
+                                    <button type="submit" name="submit" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-dot-circle-o"></i> Submit
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-xs-12 col-sm-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <strong class="card-title">Pertanyaan</strong>
-                        </div>
-                        <div class="card-body card-block">
-                                <form action="#" method="post" enctype="multipart/form-data" class="form-horizontal">
-                                    <?php foreach ($query as $data){ ?>
-                                    <div class="row form-group">
-                                        <div class="col col-md-3"><label class=" form-control-label">Pertanyaan</label></div>
-                                        <div class="col-12 col-md-9">
-                                            <p class="form-control-static"><?php echo $data['kuisioner']?></p>
-                                        </div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <div class="col col-md-3"><label class=" form-control-label">Jawaban</label></div>
-                                        <div class="col col-md-9">
-                                            <div class="form-check-inline form-check">
-                                                <label for="inline-checkbox1" class="form-check-label jwb">
-                                                    <input type="checkbox" id="inline-checkbox1" name="inline-checkbox1" value="option1" class="form-check-input">Jawaban A 
-                                                </label>
-                                                <label for="inline-checkbox2" class="form-check-label jwb">
-                                                    <input type="checkbox" id="inline-checkbox2" name="inline-checkbox2" value="option2" class="form-check-input">Jawaban B
-                                                </label>
-                                                <label for="inline-checkbox3" class="form-check-label jwb">
-                                                    <input type="checkbox" id="inline-checkbox3" name="inline-checkbox3" value="option3" class="form-check-input">Jawaban C
-                                                </label>
-                                                <label for="inline-checkbox4" class="form-check-label jwb">
-                                                    <input type="checkbox" id="inline-checkbox4" name="inline-checkbox4" value="option4" class="form-check-input">Jawaban D
-                                                </label>
-                                                <label for="inline-checkbox5" class="form-check-label jwb">
-                                                    <input type="checkbox" id="inline-checkbox5" name="inline-checkbox5" value="option5" class="form-check-input">Jawaban E
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <?php }?>
-                                    <div class="card-footer">
-                                        <button type="submit" class="btn btn-primary btn-sm">
-                                            <i class="fa fa-dot-circle-o"></i> Submit
-                                        </button>
-                                        <button type="reset" class="btn btn-danger btn-sm">
-                                            <i class="fa fa-ban"></i> Reset
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
     

@@ -103,19 +103,6 @@ $tujuan   = mysqli_query($con,"select * from t_tujuan");
                                         <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Pertanyaan</label></div>
                                         <div class="col-12 col-md-9"><textarea name="kuisioner" id="textarea-input" rows="9" placeholder="Text..." class="form-control"></textarea></div>
                                     </div>
-                                    <div class="row form-group">
-                                        <div class="col col-md-3"><label for="select" class=" form-control-label">Jawaban</label></div>
-                                        <div class="col-12 col-md-9">
-                                            <select name="jawaban" id="select" class="form-control">
-                                                <option>Silahkan Pilih</option>
-                                                <option value="A">A</option>
-                                                <option value="B">B</option>
-                                                <option value="C">C</option>
-                                                <option value="D">D</option>
-                                                <option value="E">E</option>
-                                            </select>
-                                        </div>
-                                    </div>
                                     <div class="card-footer">
                                         <button type="submit" name="submit" class="btn btn-primary btn-sm">
                                             <i class="fa fa-dot-circle-o"></i> Submit

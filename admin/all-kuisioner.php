@@ -74,7 +74,6 @@ $query = mysqli_query($con,"select * from t_kuisioner");
                                             <th>Kode Objektif Kontrol</th>
                                             <th>Kode Kontrol Keamanan</th>
                                             <th>Pertanyaan</th>
-                                            <th>Jawaban</th>
                                             <th>Tanggal Input</th>
                                             <th>Action</th>
                                         </tr>
@@ -86,7 +85,6 @@ $query = mysqli_query($con,"select * from t_kuisioner");
                                             <td><?php echo $data['kode_keamanan'] ?></td>
                                             <td><?php echo $data['kode_tujuan'] ?></td>
                                             <td><?php echo $data['kuisioner'] ?></td>
-                                            <td><?php echo $data['jawaban'] ?></td>
                                             <td><?php echo $data['created_at'] ?></td>
                                             <td><a href="edit_kuisioner.php?id=<?php echo $data['id_kuisioner']?>"><button type="button" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></button></a>
                                                 <a href="../function/admin/kuisioner/delete.php?id=<?php echo $data['id_kuisioner'] ?>"><button type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button></a></td>

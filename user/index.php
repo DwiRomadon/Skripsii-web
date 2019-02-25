@@ -4,6 +4,7 @@ session_start();
 if(isset($_SESSION['username'])){
 
     $username = $_SESSION['username'];
+    $iduser   = $_SESSION['id'];
 }else{
     header("location:http://".$_SERVER['HTTP_HOST'].'/ratih');
 }

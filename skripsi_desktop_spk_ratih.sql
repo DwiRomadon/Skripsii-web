@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 12, 2019 at 06:22 AM
+-- Generation Time: Feb 25, 2019 at 04:04 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.0.33
 
@@ -21,6 +21,21 @@ SET time_zone = "+00:00";
 --
 -- Database: `skripsi_desktop_spk_ratih`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t_hasil_quisioner`
+--
+
+CREATE TABLE `t_hasil_quisioner` (
+  `id` int(11) NOT NULL,
+  `kode_klausal` varchar(25) NOT NULL,
+  `kode_keamanan` varchar(25) NOT NULL,
+  `kode_tujuan` varchar(25) NOT NULL,
+  `point` int(1) NOT NULL,
+  `kode_user` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -77,7 +92,6 @@ CREATE TABLE `t_kuisioner` (
   `kode_keamanan` varchar(25) NOT NULL,
   `kode_tujuan` varchar(25) NOT NULL,
   `kuisioner` varchar(255) NOT NULL,
-  `jawaban` enum('A','B','C','D','E') NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -86,9 +100,9 @@ CREATE TABLE `t_kuisioner` (
 -- Dumping data for table `t_kuisioner`
 --
 
-INSERT INTO `t_kuisioner` (`id_kuisioner`, `kode_klausal`, `kode_keamanan`, `kode_tujuan`, `kuisioner`, `jawaban`, `created_at`, `updated_at`) VALUES
-(1, 'A.5', 'A.5.1', 'A.5.1.1', 'Apakah ayu cantik ?', 'A', '2019-02-12 05:41:23', NULL),
-(2, 'A.5', 'A.5.1', 'A.5.1.2', 'Apakah ayu cerdas ?', 'B', '2019-02-12 05:41:51', NULL);
+INSERT INTO `t_kuisioner` (`id_kuisioner`, `kode_klausal`, `kode_keamanan`, `kode_tujuan`, `kuisioner`, `created_at`, `updated_at`) VALUES
+(1, 'A.5', 'A.5.1', 'A.5.1.1', 'Apakah ayu cantik ?', '2019-02-12 05:41:23', NULL),
+(2, 'A.5', 'A.5.1', 'A.5.1.2', 'Apakah ayu cerdas ?', '2019-02-12 05:41:51', NULL);
 
 -- --------------------------------------------------------
 
@@ -141,11 +155,18 @@ INSERT INTO `user_access` (`id_user`, `name`, `username`, `email`, `password`, `
 (3, 'Ajeng Ayu Wulandari', 'ajengayuwulandari', 'ajeng@mail.com', 'qwerty12345', '2', '2019-01-08 10:28:14', '2018-12-29 10:05:05'),
 (4, 'Administrator', 'admin', 'admin@spk.com', '85064efb60a9601805dcea56ec5402f7', '1', '2019-02-11 03:17:56', '2019-01-08 10:29:29'),
 (5, 'Tri Rinaldi', 'tririnaldi', 'tri@user.com', 'qwerty12345', '2', '2019-01-08 13:26:09', '2019-01-08 13:26:09'),
-(6, 'Dwi R', 'dwir4', 'dwiramadhan25@yahoo.com', '827ccb0eea8a706c4c34a16891f84e7b', '2', '2019-02-10 21:16:03', '0000-00-00 00:00:00');
+(6, 'Dwi R', 'dwir4', 'dwiramadhan25@yahoo.com', '827ccb0eea8a706c4c34a16891f84e7b', '2', '2019-02-10 21:16:03', '0000-00-00 00:00:00'),
+(7, 'Dwi Romadon', 'Dr', 'd@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '2', '2019-02-19 08:18:20', '0000-00-00 00:00:00');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `t_hasil_quisioner`
+--
+ALTER TABLE `t_hasil_quisioner`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `t_keamanan`
@@ -182,6 +203,12 @@ ALTER TABLE `user_access`
 --
 
 --
+-- AUTO_INCREMENT for table `t_hasil_quisioner`
+--
+ALTER TABLE `t_hasil_quisioner`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `t_keamanan`
 --
 ALTER TABLE `t_keamanan`
@@ -209,7 +236,7 @@ ALTER TABLE `t_tujuan`
 -- AUTO_INCREMENT for table `user_access`
 --
 ALTER TABLE `user_access`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
